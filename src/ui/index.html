@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.8.0/vertx-eventbus.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body onload="initialize();">
+<h3>Web Socket Demo</h3>
+Random Value Received:
+<span id="server-value"></span>
+
+<div>
+    <br/>
+    <input type="button" onclick="getValue();" value="Get Random Value">
+</div>
+</body>
+</html>

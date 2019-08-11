@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+repositories {
+    mavenCentral()
+}
+group 'com.demo.websocket'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    vertxVersion = '3.5.1'
+}
+
+dependencies {
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-web:$vertxVersion"
+}
+
+def mainVerticle = "com.demo.websocket.verticle.WebSocketVerticle"
+def mainClass = "io.vertx.core.Starter"
+jar {
+    exclude('META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA',
+            'META-INF/*.MF')
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class': mainClass
+        attributes 'Main-Verticle': mainVerticle
+    }
+}
